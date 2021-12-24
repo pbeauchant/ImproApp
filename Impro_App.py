@@ -15,6 +15,8 @@ list_objet = np.genfromtxt('objet.csv', delimiter=',', dtype=str, encoding = 'ut
 def display_gif(word1,word2):
     # set the apikey
     apikey = st.secrets["apikey"]
+    image_holder = st.empty()
+
     # get the GIF's id and search used
     search_term = f"{word1} {word2}"
 
@@ -29,7 +31,7 @@ def display_gif(word1,word2):
         # handle error
     myGif = json.loads(r.content)
     #st.json(myGif['results'][0]['media'][0])
-    st.image(myGif['results'][0]['media'][0]['gif']['url'])
+    image_holder.image(myGif['results'][0]['media'][0]['gif']['url'])
     return
 
 if st.button('5, 4, 3, 2, 1... IMPRO :'):
